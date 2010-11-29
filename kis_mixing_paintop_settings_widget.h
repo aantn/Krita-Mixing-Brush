@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2008-2010 Lukáš Tvrdý <lukast.dev@gmail.com>
+ *  Copyright (c) 2008 Lukas Tvrdy <lukast.dev@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,31 +16,32 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef MIXING_BRUSH_H_
-#define MIXING_BRUSH_H_
+#ifndef KIS_MIXINGPAINTOP_SETTINGS_WIDGET_H_
+#define KIS_MIXINGPAINTOP_SETTINGS_WIDGET_H_
 
-#include <QVector>
+#include <kis_paintop_options_widget.h>
 
-#include <KoColor.h>
+#include "ui_wdgmixingoptions.h"
 
-#include "kis_mixingop_option.h"
-#include "kis_paint_device.h"
+class KisPaintActionTypeOption;
+class KisMixingOpOption;
+class KisPressureOpacityOption;
 
-class MixingBrush
+class KisMixingPaintOpSettingsWidget : public KisPaintOpOptionsWidget
 {
+    Q_OBJECT
 
 public:
-    MixingBrush(const MixingProperties * properties, KoColorTransformation* transformation);
-    ~MixingBrush();
-    void paint(KisPaintDeviceSP dev, qreal x, qreal y, const KoColor &color);
+    KisMixingPaintOpSettingsWidget(QWidget* parent = 0);
+    virtual ~KisMixingPaintOpSettingsWidget();
 
-private:
-    KoColor m_inkColor;
-    int m_counter;
-    const MixingProperties * m_properties;
-    KoColorTransformation* m_transfo;
-    int m_saturationId;
+    KisPropertiesConfiguration* configuration() const;
+    
+    ///Reimplemented
+    void changePaintOpSize(qreal x, qreal y);
 
+public:
+    KisMixingOpOption* m_mixingOption;
 };
 
 #endif

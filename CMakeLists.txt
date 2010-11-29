@@ -1,9 +1,9 @@
 set(kritamixingpaintop_PART_SRCS
     mixing_paintop_plugin.cpp
-    krita_mixing_paintop.cpp
-    krita_mixingop_option.cpp
-    krita_mixing_paintop_settings.cpp
-    krita_mixing_paintop_settings_widget.cpp
+    kis_mixing_paintop.cpp
+    kis_mixingop_option.cpp
+    kis_mixing_paintop_settings.cpp
+    kis_mixing_paintop_settings_widget.cpp
     mixing_brush.cpp	
     )
 

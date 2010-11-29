@@ -22,16 +22,16 @@
 #include <kiconloader.h>
 #include <kcomponentdata.h>
 #include <kstandarddirs.h>
-#include <krita_debug.h>
+#include <kis_debug.h>
 #include <kpluginfactory.h>
 
-#include <krita_paintop_registry.h>
+#include <kis_paintop_registry.h>
 
 
-#include "krita_mixing_paintop.h"
-#include "krita_simple_paintop_factory.h"
+#include "kis_mixing_paintop.h"
+#include "kis_simple_paintop_factory.h"
 
-#include "krita_global.h"
+#include "kis_global.h"
 
 K_PLUGIN_FACTORY(MixingPaintOpPluginFactory, registerPlugin<MixingPaintOpPlugin>();)
 K_EXPORT_PLUGIN(MixingPaintOpPluginFactory("krita"))
@@ -42,9 +42,9 @@ MixingPaintOpPlugin::MixingPaintOpPlugin(QObject *parent, const QVariantList &)
 {
     //
     //setComponentData(MixingPaintOpPluginFactory::componentData());
-    KritaPaintOpRegistry *r = KritaPaintOpRegistry::instance();
-    r->add(new KritaSimplePaintOpFactory<KritaMixingPaintOp, KritaMixingPaintOpSettings, KritaMixingPaintOpSettingsWidget>("mixingbrush", i18n("Mixing brush"), 
-                                                                                                                KritaPaintOpFactory::categoryExperimental(), "krita-mixing.png"));
+    KisPaintOpRegistry *r = KisPaintOpRegistry::instance();
+    r->add(new KisSimplePaintOpFactory<KisMixingPaintOp, KisMixingPaintOpSettings, KisMixingPaintOpSettingsWidget>("mixingbrush", i18n("Mixing brush"), 
+                                                                                                                KisPaintOpFactory::categoryExperimental(), "krita-mixing.png"));
 
 }
 

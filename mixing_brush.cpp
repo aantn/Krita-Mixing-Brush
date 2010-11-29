@@ -25,7 +25,7 @@
 #include <QVariant>
 #include <QHash>
 
-#include "krita_random_accessor.h"
+#include "kis_random_accessor.h"
 #include <cmath>
 #include <ctime>
 
@@ -54,13 +54,13 @@ MixingBrush::~MixingBrush()
 }
 
 
-void MixingBrush::paint(KritaPaintDeviceSP dev, qreal x, qreal y, const KoColor &color)
+void MixingBrush::paint(KisPaintDeviceSP dev, qreal x, qreal y, const KoColor &color)
 {
     m_inkColor = color;
     m_counter++;
 
     qint32 pixelSize = dev->colorSpace()->pixelSize();
-    KritaRandomAccessor accessor = dev->createRandomAccessor((int)x, (int)y);
+    KisRandomAccessor accessor = dev->createRandomAccessor((int)x, (int)y);
 
     qreal result;
     if (m_properties->inkDepletion){

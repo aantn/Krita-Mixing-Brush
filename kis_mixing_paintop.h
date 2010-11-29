@@ -1,5 +1,6 @@
 /*
- *  Copyright (c) 2008-2010 Lukáš Tvrdý <lukast.dev@gmail.com>
+ *  Copyright (c) 2008 Boudewijn Rempt <boud@valdyas.org>
+ *  Copyright (c) 2008, 2009 Lukáš Tvrdý <lukast.dev@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,31 +17,32 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef MIXING_BRUSH_H_
-#define MIXING_BRUSH_H_
+#ifndef KIS_MIXING_PAINTOP_H_
+#define KIS_MIXING_PAINTOP_H_
 
-#include <QVector>
+#include <kis_paintop.h>
+#include <kis_types.h>
 
-#include <KoColor.h>
+#include "mixing_brush.h"
+#include "kis_mixing_paintop_settings.h"
 
-#include "kis_mixingop_option.h"
-#include "kis_paint_device.h"
+class KisPainter;
 
-class MixingBrush
+class KisMixingPaintOp : public KisPaintOp
 {
 
 public:
-    MixingBrush(const MixingProperties * properties, KoColorTransformation* transformation);
-    ~MixingBrush();
-    void paint(KisPaintDeviceSP dev, qreal x, qreal y, const KoColor &color);
+
+    KisMixingPaintOp(const KisMixingPaintOpSettings *settings, KisPainter * painter, KisImageWSP image);
+    virtual ~KisMixingPaintOp();
+
+    qreal paintAt(const KisPaintInformation& info);
 
 private:
-    KoColor m_inkColor;
-    int m_counter;
-    const MixingProperties * m_properties;
-    KoColorTransformation* m_transfo;
-    int m_saturationId;
-
+    KisPaintDeviceSP m_dab;
+    MixingBrush * m_mixingBrush;
+    KisPressureOpacityOption m_opacityOption;
+    MixingProperties m_properties;
 };
 
-#endif
+#endif // KIS_MIXING_PAINTOP_H_
