@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mixing brush
+Name[x-test]=xxMixing brushxx
+X-KDE-ServiceTypes=Krita/Paintop
+Type=Service
+X-KDE-Library=kritamixingpaintop
+X-Krita-Version=4
