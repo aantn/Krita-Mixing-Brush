@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Minimal brush
+Name[x-test]=xxMinimal brushxx
+X-KDE-ServiceTypes=Krita/Paintop
+Type=Service
+X-KDE-Library=kritaminimalpaintop
+X-Krita-Version=4

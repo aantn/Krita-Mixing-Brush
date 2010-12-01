@@ -1,0 +1,17 @@
+A minimal paintop that can be used to develop your own paintop.
+
+In the below instructions, replace "MYPAINTOP", "mypaintop", and "Mypaintop" with the name
+of your own painttop, capitalized correctly.
+
+How to use:
+	* Copy this directory and everything in it to koffice/krita/plugins/paintops/mypaintop
+	* Run the following commands in the new mypainttop directory:
+		* find . -type f -exec sed -i s/minimal/mypaintop/g {} +
+		* find . -type f -exec sed -i s/MINIMAL/MYPAINTOP/g {} +
+		* find . -type f -exec sed -i s/Minimal/Mypaintop/g {} +
+		* ls ./* | awk '{print("mv "$1" "$1)}' | sed 's/minimal/mypaintop/2' | /bin/sh
+	* Add the following line to koffice/krita/plugins/paintops/CMakeLists.txt:
+		* add_subdirectory( mypaintop )
+	* You now have a working paintop. You can compile to check that everything works,
+	  or start adding code so that the paintop does something. You should also fix the
+	  copyright notices at the top of all .h and .cpp files.
