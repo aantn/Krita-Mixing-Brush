@@ -25,6 +25,10 @@
 
 #include "kis_mixing_paintop_settings.h"
 
+#include <kis_pressure_opacity_option.h>
+#include <kis_pressure_size_option.h>
+
+
 class KisPainter;
 
 class KisMixingPaintOp : public KisBrushBasedPaintOp
@@ -38,6 +42,19 @@ public:
     qreal paintAt(const KisPaintInformation& info);
 
 private:
+    KisMixingPaintOpSettings* m_settings;
+
+    /**
+     *  Curve to control the opacity of the entire dab
+     *  with device input
+     */
+    KisPressureOpacityOption m_opacityOption;
+    
+    /**
+     *  Curve to control the size of the entire dab
+     *  with device input
+     */
+    KisPressureSizeOption m_sizeOption;
 };
 
 #endif // KIS_MIXING_PAINTOP_H_
