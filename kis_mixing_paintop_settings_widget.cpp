@@ -22,12 +22,17 @@
 #include "kis_mixing_paintop_settings.h"
 
 #include <kis_paintop_options_widget.h>
+#include <kis_curve_option_widget.h>
+#include <kis_pressure_opacity_option.h>
+#include <kis_pressure_size_option.h>
 
 KisMixingPaintOpSettingsWidget:: KisMixingPaintOpSettingsWidget(QWidget* parent)
         : KisBrushBasedPaintopOptionWidget(parent)
 {
     m_mixingOption =  new KisMixingOpOption();
     addPaintOpOption(m_mixingOption);
+    addPaintOpOption(new KisCurveOptionWidget(new KisPressureSizeOption()));
+    addPaintOpOption(new KisCurveOptionWidget(new KisPressureOpacityOption()));
 }
 
 KisMixingPaintOpSettingsWidget::~ KisMixingPaintOpSettingsWidget()
